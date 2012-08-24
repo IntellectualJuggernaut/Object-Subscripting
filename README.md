@@ -5,20 +5,30 @@ Just a few categories on NSArray and NSDictionary to make them compatible with o
 
 ===================
 
+##Background
+
 While updating my base prefix.pch, I noticed that 
 
-\#if __has_feature( objc_subscripting )
+```objective-c
+
+#if __has_feature( objc_subscripting )
 
   ... 
   
-\#endif
+#endif
+
+```
 
 returns true on iOS.  However, if you try to use the new syntax, XCode cries, "expected method to write _______ element not found".
 So, I wrote the required methods and sure enough, it works just fine.
 
 See http://clang.llvm.org/docs/ObjectiveCLiterals.html for more information on the new objec subscripting syntax.
 
+##Syntax
+
 Simply add the files, or just "objc_subscripting_compat.h", and you can start using the new syntax.
+
+```objective-c
 
 NSArray* array1;            // defined elsewhere
 
@@ -42,5 +52,7 @@ NSMutableDictionary* dict2; // defined elsewhere
 dict2[@"key1"] = obj2;
 
 ...
+
+```
 
 Enjoy!
